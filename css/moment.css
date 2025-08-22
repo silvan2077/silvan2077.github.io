@@ -1,0 +1,1 @@
+.moment-card{background:var(--card-bg);padding:15px 20px;border-radius:12px;margin-bottom:20px;box-shadow:var(--card-box-shadow);transition:transform .2s ease}.moment-card:hover{transform:translateY(-3px)}.moment-card p{margin:0;font-size:1rem;line-height:1.6}.moment-time{display:block;margin-top:10px;font-size:.85rem;color:#888;text-align:right}
