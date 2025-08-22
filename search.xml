@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>markdown与外挂标签</title>
+      <link href="/2025/08/22/markdown%E4%B8%8E%E5%A4%96%E6%8C%82%E6%A0%87%E7%AD%BE/"/>
+      <url>/2025/08/22/markdown%E4%B8%8E%E5%A4%96%E6%8C%82%E6%A0%87%E7%AD%BE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Markdown基础语法"><a href="#Markdown基础语法" class="headerlink" title="Markdown基础语法"></a>Markdown基础语法</h1><h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">``` + 代码语言 + 回车</span></span><br></pre></td></tr></table></figure><h2 id="多级标题"><a href="#多级标题" class="headerlink" title="多级标题"></a>多级标题</h2><p>在Markdown中多级标题最多只有六级</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># H1</span></span><br><span class="line"><span class="section">## H2sss</span></span><br><span class="line"><span class="section">### H3aa</span></span><br><span class="line"><span class="section">#### H4</span></span><br><span class="line"><span class="section">##### H5</span></span><br><span class="line"><span class="section">###### H6</span></span><br></pre></td></tr></table></figure><h2 id="文字样式"><a href="#文字样式" class="headerlink" title="文字样式"></a>文字样式</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">文字加粗展示： <span class="strong">**加粗**</span></span><br><span class="line">文字斜体演示： <span class="emphasis">*斜体*</span></span><br><span class="line">文字高亮演示： <span class="code">`高亮`</span></span><br><span class="line">文本删除线演示：~~删除~~</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/2025/08/19/java%E5%85%A5%E9%97%A8/"/>
       <url>/2025/08/19/java%E5%85%A5%E9%97%A8/</url>
@@ -21,7 +34,7 @@
       <link href="/2025/08/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
       <url>/2025/08/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
       
-        <content type="html"><![CDATA[<h2 id="我的第二篇文章"><a href="#我的第二篇文章" class="headerlink" title="我的第二篇文章"></a>我的第二篇文章</h2><p>111</p><!-- 文章发布时间统计图 -->]]></content>
+        <content type="html"><![CDATA[<h2 id="我的第二篇文章"><a href="#我的第二篇文章" class="headerlink" title="我的第二篇文章"></a>我的第二篇文章</h2><p>111</p><!-- 文章发布时间统计图 --><p>222<br>333<br>444</p>]]></content>
       
       
       
