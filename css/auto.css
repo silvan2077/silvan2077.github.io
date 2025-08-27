@@ -1,0 +1,25 @@
+/* JavaScript方案所需的颜色类 */
+.quote-blue {
+  border-left-color: #3182ce !important;
+  background-color: rgba(49, 130, 206, 0.1) !important;
+}
+
+.quote-green {
+  border-left-color: #48bb78 !important;
+  background-color: rgba(72, 187, 120, 0.1) !important;
+}
+
+.quote-orange {
+  border-left-color: #ed8936 !important;
+  background-color: rgba(237, 137, 54, 0.1) !important;
+}
+
+.quote-red {
+  border-left-color: #e53e3e !important;
+  background-color: rgba(229, 62, 62, 0.1) !important;
+}
+
+.quote-purple {
+  border-left-color: #805ad5 !important;
+  background-color: rgba(128, 90, 213, 0.1) !important;
+}
