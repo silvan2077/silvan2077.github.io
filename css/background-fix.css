@@ -1,1 +1,70 @@
-body{background-attachment:fixed!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}html{background-attachment:fixed!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}#universe{z-index:-2!important}#canvas_nest{z-index:-1!important}@media screen and (max-width:768px){body{background-attachment:scroll!important}}[data-theme=dark] body{background-attachment:fixed!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}.layout{background:0 0!important}#content-inner{background:0 0!important}#aside-content .card-widget,#recent-posts,div#archive,div#page,div#post{background:rgba(255,255,255,.88)!important;backdrop-filter:blur(5px) saturate(150%)!important}[data-theme=dark] #aside-content .card-widget,[data-theme=dark] #recent-posts,[data-theme=dark] div#archive,[data-theme=dark] div#page,[data-theme=dark] div#post{background:rgba(25,25,25,.88)!important}
+/* 背景修复CSS */
+/* 确保背景图片正确显示 */
+
+/* 网站背景设置 */
+body {
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* 确保背景图片在页面加载时显示 */
+html {
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* 修复星空背景层级 */
+#universe {
+  z-index: -2 !important;
+}
+
+/* 确保canvas_nest在正确层级 */
+#canvas_nest {
+  z-index: -1 !important;
+}
+
+/* 修复移动端背景 */
+@media screen and (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+}
+
+/* 确保背景在夜间模式下也正确显示 */
+[data-theme="dark"] body {
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* 修复可能的背景冲突 */
+.layout {
+  background: transparent !important;
+}
+
+#content-inner {
+  background: transparent !important;
+}
+
+/* 确保页面内容区域透明，让背景显示 */
+#recent-posts,
+#aside-content .card-widget,
+div#post,
+div#page,
+div#archive {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(5px) saturate(150%) !important;
+}
+
+[data-theme="dark"] #recent-posts,
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] div#post,
+[data-theme="dark"] div#page,
+[data-theme="dark"] div#archive {
+  background: rgba(25, 25, 25, 0.88) !important;
+}
