@@ -1,0 +1,791 @@
+<hr>
+<p>title: JaveWeb—-HTML、CSS<br>date: 2025-08-29 14:28:57<br>tags:<br>layout: post<br>toc: true</p>
+<h2 id="aside-true"><a href="#aside-true" class="headerlink" title="aside: true"></a>aside: true</h2><h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>HTML是用来编写网页的一门语言，像京东，12306等网站都是用HTML编写的。</p>
+<p>HTML(HyperText Markup Language)：<code>超文本标记语言</code></p>
+<ul>
+<li><p>超文本：超越了文本的限制，比普通文本更强大。除了文字信息，还可以定义图片、音频、视频等内容</p>
+<p> 在网页中除了能看到一些文字，同时也有大量的图片展示；有些网页也有视频，音频等。这种展示效果超越了文本展示的限制。</p>
+</li>
+<li><p>标记语言：由标签构成的语言</p>
+<p>之前学习的XML就是标记语言，由一个一个的标签组成，HTML 也是由标签组成 。我们在浏览器页面右键可以查看页面的源代码。</p>
+</li>
+</ul>
+<p>HTML标签不像XML那样可以自定义，<code>HTML中的标签都是预定义好的</code>，运行在浏览器上并由浏览器解析，然后展示出对应的效果。例如我们想在浏览器上展示出图片就需要使用预定义的 <code>img</code> 标签；想展示可以点击的链接的效果就可以使用预定义的 <code>a</code> 标签等。</p>
+<p>W3C标准：</p>
+<ul>
+<li>W3C是<code>万维网联盟</code>，这个组成是用来定义标准的。他们规定了一个网页是由三部分组成，分别是：<ul>
+<li><code>结构</code>：对应的是 HTML 语言</li>
+<li><code>表现</code>：对应的是 CSS 语言</li>
+<li><code>行为</code>：对应的是 JavaScript 语言</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>HTML定义页面的整体结构；</li>
+<li>CSS是用来美化页面，让页面看起来更加美观；</li>
+<li>JavaScript可以使网页动起来，比如轮播图也就是多张图片自动的进行切换等效果。</li>
+</ul>
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><p>在IDEA中新建一个HTML文件，会默认为我们生成几个标签</p>
+<pre><code class="lang-html">&lt;!--HTML5的标识--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;!--设定字符集--&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>html标签是根标签，下面有 <code>head</code> 标签和 <code>body</code> 标签这两个子标签。而 <code>head</code> 标签的 <code>title</code> 子标签是用来定义页面标题名称的，它定义的内容会展示在浏览器的标题位置</p>
+<p><code>body</code> 标签的内容会被展示在内容区中</p>
+<p>使用<code>font</code>标签可以改变文字颜色、大小、字体</p>
+<pre><code>&lt;!--HTML5的标识--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;!--设定字符集--&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;我的第一个网页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;font color=&quot;red&quot; size=&quot;5&quot; face=&quot;楷体&quot;&gt;HELLO WORLD!!&lt;/font&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ul>
+<li><p>HTML 结构标签</p>
+</li>
+<li><p>HTML 标签不区分大小写</p>
+<p>如上案例中的 <code>font</code> 写成 <code>Font</code> 也是一样可以展示出对应的效果的。</p>
+</li>
+<li><p>HTML 标签属性值 单双引皆可</p>
+<p>如上案例中的color属性值使用双引号也是可以的。</p>
+<pre><code class="lang-html">&lt;font color=&quot;red&quot;&gt;&lt;/font&gt;
+</code></pre>
+</li>
+<li><p>HTML 语法松散</p>
+<p>比如 font 标签不加结束标签也是可以展示出效果的。但不建议，最好严格按照要求去写。</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标签</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;HTML&gt;</code></td>
+<td style="text-align:center">定义HTML文档</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;head&gt;</code></td>
+<td style="text-align:center">定义关于文档的信息</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;title&gt;</code></td>
+<td style="text-align:center">定义文档的标题</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;body&gt;</code></td>
+<td style="text-align:center">定义文档的主体</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="基础标签"><a href="#基础标签" class="headerlink" title="基础标签"></a>基础标签</h2><p>基础标签就是一些和文字相关的标签，如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标签</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;h1&gt; ~ &lt;h6&gt;</code></td>
+<td style="text-align:center">定义标题，h1最大，h6最小</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;font&gt;</code></td>
+<td style="text-align:center">定义文本的字体、字体尺寸、字体颜色</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;b&gt;</code></td>
+<td style="text-align:center">定义粗体文本</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;i&gt;</code></td>
+<td style="text-align:center">定义斜体文本</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;u&gt;</code></td>
+<td style="text-align:center">定义文本下划线</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;center&gt;</code></td>
+<td style="text-align:center">定义文本居中</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;p&gt;</code></td>
+<td style="text-align:center">定义段落</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;br&gt;</code></td>
+<td style="text-align:center">定义折行</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;hr&gt;</code></td>
+<td style="text-align:center">定义水平线</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><p>书写标题标签</p>
+<p>标题标签中 h1最大，h6最小。</p>
+<pre><code>&lt;h1&gt;我是标题 h1&lt;/h1&gt;
+&lt;h2&gt;我是标题 h2&lt;/h2&gt;
+&lt;h3&gt;我是标题 h3&lt;/h3&gt;
+&lt;h4&gt;我是标题 h4&lt;/h4&gt;
+&lt;h5&gt;我是标题 h5&lt;/h5&gt;
+&lt;h6&gt;我是标题 h6&lt;/h6&gt;
+</code></pre><h3 id="hr标签"><a href="#hr标签" class="headerlink" title="hr标签"></a>hr标签</h3><p><code>hr</code> 标签在浏览器中呈现出 <code>水平线</code> 的效果。</p>
+<p>在页面文件中书写 hr 标签</p>
+<pre><code>&lt;hr&gt;
+</code></pre><h3 id="字体标签"><a href="#字体标签" class="headerlink" title="字体标签"></a>字体标签</h3><p>font：字体标签</p>
+<ul>
+<li><p><strong>face 属性：</strong>用来设置字体。如 “楷体”、”宋体”等</p>
+</li>
+<li><p><strong>color 属性：</strong>设置文字颜色。颜色有三种表示方式</p>
+<ul>
+<li><p><strong>英文单词</strong>：red,pink,blue…</p>
+<p>这种方式表示的颜色特别有限，所以一般不用。</p>
+</li>
+<li><p><strong>rgb(值1,值2,值3)</strong>：值的取值范围：0~255</p>
+<p>此种方式也就是三原色（红绿蓝）设置方式。 例如： rgb(255,0,0)。</p>
+<p>这种书写起来比较麻烦，一般不用。</p>
+</li>
+<li><p><strong>#值1值2值3</strong>：值的范围：00~FF</p>
+<p>这种方式是rgb方式的简化写法，以后基本都用此方式。</p>
+<p>值1表示红色的范围，值2表示绿色的范围，值3表示蓝色范围。例如： #ff0000</p>
+</li>
+</ul>
+</li>
+<li><p><strong>size 属性：</strong>设置文字大小</p>
+</li>
+</ul>
+<pre><code>&lt;font color=&quot;red&quot; size=&quot;5&quot; face=&quot;楷体&quot;&gt;测试文本&lt;/font&gt;
+</code></pre><blockquote>
+<p><strong>注意：</strong>font 标签已经不建议使用了，以后如果要改变文字字体，大小，颜色可以使用 CSS 进行设置。</p>
+</blockquote>
+<h3 id="换行标签"><a href="#换行标签" class="headerlink" title="换行标签"></a>换行标签</h3><p>如果直接在body标签中使用回车，是不会自动换行的，如果要实现换行效果，需要使用 换行标签（br标签）。</p>
+<h3 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h3><p>上面文字展示的效果还是不太好，我们想让每一段上下都加空行。此时就需要使用段落标签（p标签）</p>
+<p>在页面文件中书写如下内容：</p>
+<pre><code class="lang-html">
+&lt;p&gt;刚察草原绿草如茵，沙柳河水流淌入湖。藏族牧民索南才让家中，茶几上摆着馓子、麻花和水果，炉子上刚煮开的奶茶香气四溢……&lt;/p&gt;
+
+&lt;p&gt;6月8日下午，习近平总书记来到青海省海北藏族自治州刚察县沙柳河镇果洛藏贡麻村，走进牧民索南才让家中，看望慰问藏族群众。&lt;/p&gt;
+</code></pre>
+<p>这种效果就会比之前的效果好一些，呈现出段落的效果。</p>
+<h3 id="加粗、斜体、下划线标签"><a href="#加粗、斜体、下划线标签" class="headerlink" title="加粗、斜体、下划线标签"></a>加粗、斜体、下划线标签</h3><ul>
+<li>b：加粗标签</li>
+<li>i：斜体标签</li>
+<li>u：下划线标签，在文字的下方有一条横线</li>
+</ul>
+<pre><code class="lang-html">&lt;b&gt;沙柳河水流淌&lt;/b&gt;&lt;br&gt;
+&lt;i&gt;沙柳河水流淌&lt;/i&gt;&lt;br&gt;
+&lt;u&gt;沙柳河水流淌&lt;/u&gt;&lt;br&gt;
+</code></pre>
+<p>展示的效果如下：</p>
+<blockquote>
+<p><strong>沙柳河水流淌</strong></p>
+<p><em>沙柳河水流淌</em></p>
+<p><u>沙柳河水流淌</u></p>
+</blockquote>
+<h3 id="居中标签"><a href="#居中标签" class="headerlink" title="居中标签"></a>居中标签</h3><p>center ：文本居中</p>
+<p>代码如下：</p>
+<pre><code>&lt;hr&gt;
+&lt;center&gt;
+    我是文章标题
+&lt;/center&gt;
+</code></pre><p>效果如下</p>
+<center>
+    我是文章标题
+</center>
+
+<h3 id="图片、音频、视频标签"><a href="#图片、音频、视频标签" class="headerlink" title="图片、音频、视频标签"></a>图片、音频、视频标签</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标签</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;img&gt;</code></td>
+<td style="text-align:center">定义图片</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;audio&gt;</code></td>
+<td style="text-align:center">定义音频</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;video&gt;</code></td>
+<td style="text-align:center">定义视频</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>img：定义图片<ul>
+<li>src：规定显示图像的 URL（统一资源定位符）</li>
+<li>height：定义图像的高度</li>
+<li>width：定义图像的宽度</li>
+</ul>
+</li>
+<li>audio：定义音频。支持的音频格式：MP3、WAV、OGG<ul>
+<li>src：规定音频的 URL</li>
+<li>controls：显示播放控件</li>
+</ul>
+</li>
+<li>video：定义视频。支持的音频格式：MP4, WebM、OGG<ul>
+<li>src：规定视频的 URL</li>
+<li>controls：显示播放控件</li>
+</ul>
+</li>
+</ul>
+<p><strong>尺寸单位：</strong></p>
+<p>height属性和width属性有两种设置方式：</p>
+<ul>
+<li>像素：单位是px</li>
+<li>百分比。占父标签的百分比。例如宽度设置为 50%，意思就是占它的父标签宽度一半（50%） </li>
+<li>不设置宽度，默认宽度是图片的宽度</li>
+</ul>
+<p><strong>资源路径：</strong></p>
+<p>图片，音频，视频标签都有src属性，而src是用来指定对应的图片，音频，视频文件的路径。此处的图片，音频，视频就称为资源。资源路径有<code>绝对路径</code>和<code>相对路径</code>两种方式</p>
+<h3 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h3><p>在网页中可以看到很多超链接标签，当我们点击这些超链接时会跳转到其他的页面或者资源。</p>
+<p><code>a</code> 标签属性：</p>
+<ul>
+<li>href：指定访问资源的URL</li>
+<li>target：指定打开资源的方式<ul>
+<li>_self：默认值，在当前页面打开</li>
+<li>_blank：在空白页面打开</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-html">&lt;!--HTML5的标识--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;!--设定字符集--&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;我的第一个网页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a href=&quot;https://silvan2077.github.io/&quot; target=&quot;_blank&quot;&gt;点我跳转至博客主页&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h2><p><code>HTML</code> 中列表分为</p>
+<ul>
+<li><p>有序列表</p>
+<ol>
+<li>咖啡</li>
+<li>牛奶</li>
+<li>可乐</li>
+</ol>
+</li>
+<li><p>无序列表</p>
+<ul>
+<li>Apex</li>
+<li>Deadcells</li>
+<li>Terraria</li>
+</ul>
+</li>
+</ul>
+<p><strong>标签说明：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标签</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;ol&gt;</code></td>
+<td style="text-align:center">定义有序列表</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;ul&gt;</code></td>
+<td style="text-align:center">定义无序列表</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;li&gt;</code></td>
+<td style="text-align:center">定义列表项</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>有序列表中的 <code>type</code> 属性用来指定标记的标号的类型（数字、字母、罗马数字等）</p>
+<p>无序列表中的 <code>type</code> 属性用来指定标记的形状</p>
+<p>代码演示：</p>
+<pre><code class="lang-html">&lt;!--HTML5的标识--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;!--设定字符集--&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;我的第一个网页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;ul&gt;
+    &lt;li&gt;咖啡&lt;/li&gt;
+    &lt;li&gt;牛奶&lt;/li&gt;
+    &lt;li&gt;可乐&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol type=&quot;A&quot;&gt;
+    &lt;li&gt;Apex&lt;/li&gt;
+    &lt;li&gt;Deadcells&lt;/li&gt;
+    &lt;li&gt;Terraria&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h2><ul>
+<li><code>table</code> ：定义表格<ul>
+<li>border：规定表格边框的宽度</li>
+<li>width ：规定表格的宽度</li>
+<li>cellspacing：规定单元格之间的空白</li>
+</ul>
+</li>
+<li><code>tr</code> ：定义行<ul>
+<li>align：定义表格行的内容对齐方式</li>
+</ul>
+</li>
+<li><code>td</code> ：定义单元格<ul>
+<li>rowspan:规定单元格可横跨的行数(横向合并单元格)</li>
+<li>colspan:规定单元格可横跨的列数(纵向合并单元格)</li>
+</ul>
+</li>
+<li><code>th</code> ：定义表头单元格</li>
+</ul>
+<pre><code class="lang-html">&lt;table border=&quot;1&quot; cellspacing=&quot;0&quot; width=&quot;500&quot; &gt;
+    &lt;tr align=&quot;center&quot;&gt;
+        &lt;th&gt;序号&lt;/th&gt;
+        &lt;th&gt;品牌logo&lt;/th&gt;
+        &lt;th&gt;品牌名称&lt;/th&gt;
+        &lt;th&gt;企业名称&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr align=&quot;center&quot;&gt;
+        &lt;td&gt;010&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;https://t8.baidu.com/it/u=3082494854,3782081507&amp;fm=85&amp;app=131&amp;size=f242,150&amp;n=0&amp;f=JPEG&amp;fmt=auto?s=84165C97CFA40C8000A1E5EB0300E063&amp;sec=1660496400&amp;t=c8906529b7d9dfc5354b293d180b2ce1&quot; height=&quot;20&quot; width=&quot;30&quot;  &gt;&lt;/td&gt;
+        &lt;td&gt;三只松鼠&lt;/td&gt;
+        &lt;td&gt;三只松鼠&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr align=&quot;center&quot;&gt;
+        &lt;td&gt;009&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;https://files.codelife.cc/website/5f2a578265bf280ee60a165a.png?x-oss-process=image/resize,limit_0,m_fill,w_100,h_100/quality,q_100&quot; height=&quot;20&quot; width=&quot;30&quot;&gt;&lt;/td&gt;
+        &lt;td&gt;优衣库&lt;/td&gt;
+        &lt;td&gt;优衣库&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr align=&quot;center&quot;&gt;
+        &lt;td&gt;008&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;https://files.codelife.cc/website/mi.svg&quot; height=&quot;20&quot; width=&quot;30&quot;&gt;&lt;/td&gt;
+        &lt;td&gt;小米&lt;/td&gt;
+        &lt;td&gt;小米科技有限公司&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<h2 id="布局标签"><a href="#布局标签" class="headerlink" title="布局标签"></a>布局标签</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标签</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;div&gt;</code></td>
+<td style="text-align:center">定义HTML文档中的一个区域部分，经常与CSS一起使用，用来布局网页</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;span&gt;</code></td>
+<td style="text-align:center">用于组合行内元素。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这两个标签，一般都是和css结合到一块使用来实现页面的布局。</p>
+<p><code>div</code>标签 在浏览器上会有换行的效果，而 <code>span</code> 标签在浏览器上没有换行效果。</p>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;我是div&lt;/div&gt;
+    &lt;div&gt;我是div&lt;/div&gt;
+    &lt;span&gt;我是span&lt;/span&gt;
+    &lt;span&gt;我是span&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h2><p>表单标签效果大家其实都不陌生，像登陆页面、注册页面等都是表单。</p>
+<p>表单就是用来<code>采集用户输入的数据</code>，然后将数据发送到服务端，服务端会对数据库进行操作，比如注册就是将数据保存到数据库中，而登陆就是根据用户名和密码进行数据库的查询操作。</p>
+<h3 id="表单标签概述"><a href="#表单标签概述" class="headerlink" title="表单标签概述"></a>表单标签概述</h3><p>表单：在网页中主要负责数据采集功能，使用<code>&lt;form&gt;</code>标签定义表单</p>
+<p>表单项(元素)：不同类型的 input 元素、下拉列表、文本域等</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标签</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;form&gt;</code></td>
+<td style="text-align:center">定义表单</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;input&gt;</code></td>
+<td style="text-align:center">定义表单项，通过type属性控制输入形式</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;label&gt;</code></td>
+<td style="text-align:center">为表单项定义标注</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;select&gt;</code></td>
+<td style="text-align:center">定义下拉列表</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;option&gt;</code></td>
+<td style="text-align:center">定义下拉列表的列表项</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;textarea&gt;</code></td>
+<td style="text-align:center">定义文本域</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>form</code> 是表单标签，它在页面上没有任何展示的效果。需要借助于表单项标签来展示不同的效果。</p>
+<h3 id="form标签属性"><a href="#form标签属性" class="headerlink" title="form标签属性"></a>form标签属性</h3><ul>
+<li><p><strong>action：规定当提交表单时向何处发送表单数据，该属性值就是URL</strong></p>
+<p>以后会将数据提交到服务端，该属性需要书写服务端的URL。而今天我们可以书写 <code>#</code> ，表示提交到当前页面来看效果。</p>
+</li>
+<li><p><strong>method ：规定用于发送表单数据的方式</strong></p>
+<p>method取值有如下两种：</p>
+<ul>
+<li>get：默认值。如果不设置method属性则默认就是该值<ul>
+<li>请求参数会拼接在URL后边</li>
+<li>url的长度有限制 4KB</li>
+</ul>
+</li>
+<li>post：<ul>
+<li>浏览器会将数据放到http<code>请求消息体</code>中</li>
+<li>请求参数无限制的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p>由于表单标签在页面上没有任何展示的效果，所以在演示的过程是会先使用 <code>input</code> 这个表单项标签展示输入框效果。</p>
+<p>代码如下：<br>{% tabs input %}<br><!-- tab 输入框展示 --></p>
+<p><form>
+    <input type="text">
+    <input type="submit">
+</form><br><!-- endtab --></p>
+<!-- tab 样例代码 -->
+<pre><code class="lang-html">&lt;form&gt;
+    &lt;input type=&quot;text&quot;&gt;
+    &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<p>从效果可以看到页面有一个输入框，用户可以在数据框中输入自己想输入的内容，点击提交按钮以后会将数据发送到服务端，当然现在肯定不能实现。现在我们可以将 <code>form</code> 标签的 <code>action</code> 属性值设置为 <code>#</code> ，将其将数据提交到当前页面。还需要注意一点，要想提交数据，<code>input</code> 输入框必须设置 <code>name</code> 属性。代码如下：</p>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;#&quot;&gt;
+    用户名&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;
+    密码&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>接下来我们来聊 <code>method</code> 属性，默认是 <code>method = &#39;get&#39;</code>，所以该取值就会将数据拼接到URL的后面。新建html文件，输入用户名为<code>silvan</code>，密码为<code>123321</code>，点击提交，效果如下：<code>file:///D:/Desktop/111.html?username=silvan&amp;password=123321#</code></p>
+<h3 id="表单项标签"><a href="#表单项标签" class="headerlink" title="表单项标签"></a>表单项标签</h3><p>表单项标签有很多，不同的表单项标签有不同的展示效果。表单项标签可以分为以下三个：</p>
+<ul>
+<li><code>&lt;input&gt;</code>：表单项，通过type属性控制输入形式<br><code>input</code> 标签有个 <code>type</code> 属性。 <code>type</code> 属性的取值不同，展示的效果也不一样。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">type取值</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">text</td>
+<td style="text-align:center">默认值。定义单行的输入字段</td>
+</tr>
+<tr>
+<td style="text-align:center">password</td>
+<td style="text-align:center">定义密码字段</td>
+</tr>
+<tr>
+<td style="text-align:center">radio</td>
+<td style="text-align:center">定义单选按钮 男 女</td>
+</tr>
+<tr>
+<td style="text-align:center">checkbox</td>
+<td style="text-align:center">定义复选框 Apex Deadcells Terraria</td>
+</tr>
+<tr>
+<td style="text-align:center">file</td>
+<td style="text-align:center">定义文件上传按钮</td>
+</tr>
+<tr>
+<td style="text-align:center">hidden</td>
+<td style="text-align:center">定义隐藏的输入字段</td>
+</tr>
+<tr>
+<td style="text-align:center">submit</td>
+<td style="text-align:center">定义提交按钮，提交按钮会把表单数据发送到服务器</td>
+</tr>
+<tr>
+<td style="text-align:center">reset</td>
+<td style="text-align:center">定义重置按钮，重置按钮会清除表单中的所有数据</td>
+</tr>
+<tr>
+<td style="text-align:center">button</td>
+<td style="text-align:center">定义可点击按钮</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>&lt;select&gt;</code>：定义下拉列表，<code>&lt;option&gt;</code> 定义列表项<br>{% tabs select %}  <!--tab 下拉列表  -->
+<select><br>  <option>北京</option><br>  <option>上海</option><br>  <option>广州</option><br>  <option>深圳</option>
+</select><!-- endtab -->
+</li>
+</ul>
+<!-- tab 样例代码 -->
+<pre><code class="lang-html">&lt;select&gt;
+    &lt;option&gt;北京&lt;/option&gt;
+    &lt;option&gt;上海&lt;/option&gt;
+    &lt;option&gt;广州&lt;/option&gt;
+    &lt;option&gt;深圳&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<ul>
+<li><code>&lt;textarea&gt;</code>：文本域，它可以输入多行文本，而 <code>input</code> 数据框只能输入一行文本。<br>{% tabs textarea %}<!-- tab 文本域 -->
+<textarea></textarea><!-- endtab -->
+</li>
+</ul>
+<!-- tab 样例代码 -->
+<pre><code class="lang-html">&lt;textarea&gt;&lt;/textarea&gt;
+</code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<blockquote>
+<ul>
+<li>以上标签项的内容要想提交，必须得定义 <code>name</code> 属性。</li>
+<li>每一个标签都有id属性，id属性值是唯一的标识。</li>
+<li>单选框、复选框、下拉列表需要使用 <code>value</code> 属性指定提交的值。</li>
+</ul>
+</blockquote>
+<ul>
+<li>练习：实现以下表单样式<br>{% tabs form %}<!-- tab 表单 -->
+</li>
+</ul>
+<p><html lang="en"></p>
+<p><head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head></p>
+<p><body></p>
+<p><form action="#">
+    用户名：
+    <input type="text" name="username"><br>
+    密码：
+    <input type="password" name="password"><br>
+    性别：
+    <input type="radio" name="gender" value="1">男
+    <input type="radio" name="gender" value="2">女<br>
+    爱好：
+    <input type="checkbox" name="hobbby" value="1">Apex
+    <input type="checkbox" name="hobbby" value="2">Deadcells
+    <input type="checkbox" name="hobbby" value="3">Terraria<br>
+    头像：
+    <input type="file"><br>
+    城市：
+    <select>
+        <option>北京</option>
+        <option>上海</option>
+        <option>广州</option>
+        <option>深圳</option>
+    </select><br>
+    个人描述：
+    <textarea cols="20" rows="5" name="desc"></textarea><br>
+    <input type="submit" value="免费注册">
+    <input type="reset" value="重置">
+    <input type="button" value="一个按钮">
+</form><br>&lt;/body&gt;<br>&lt;/html&gt;<br><!-- endtab --><br><!-- tab 代码 --></p>
+<pre><code class="lang-html">&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;#&quot;&gt;
+    用户名：
+    &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;
+    密码：
+    &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;br&gt;
+    性别：
+    &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;1&quot;&gt;男
+    &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;2&quot;&gt;女&lt;br&gt;
+    爱好：
+    &lt;input type=&quot;checkbox&quot; name=&quot;hobbby&quot; value=&quot;1&quot;&gt;Apex
+    &lt;input type=&quot;checkbox&quot; name=&quot;hobbby&quot; value=&quot;2&quot;&gt;Deadcells
+    &lt;input type=&quot;checkbox&quot; name=&quot;hobbby&quot; value=&quot;3&quot;&gt;Terraria&lt;br&gt;
+    头像：
+    &lt;input type=&quot;file&quot;&gt;&lt;br&gt;
+    城市：
+    &lt;select&gt;
+        &lt;option&gt;北京&lt;/option&gt;
+        &lt;option&gt;上海&lt;/option&gt;
+        &lt;option&gt;广州&lt;/option&gt;
+        &lt;option&gt;深圳&lt;/option&gt;
+    &lt;/select&gt;&lt;br&gt;
+    个人描述：
+    &lt;textarea cols=&quot;20&quot; rows=&quot;5&quot; name=&quot;desc&quot;&gt;&lt;/textarea&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;免费注册&quot;&gt;
+    &lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;一个按钮&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>CSS 是一门语言，用于控制网页表现。我们之前介绍过W3C标准。W3C标准规定了网页是由以下组成：</p>
+<blockquote>
+<ul>
+<li>结构：HTML</li>
+<li>表现：CSS</li>
+<li>行为：JavaScript</li>
+</ul>
+</blockquote>
+<p>CSS也有一个专业的名字：<code>Cascading Style Sheet</code>（层叠样式表）。</p>
+<p>如下面的代码， <code>style</code> 标签中定义的就是css代码。该代码描述了将 div 标签的内容的字体颜色设置为 红色。</p>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;style&gt;
+        div{
+            color: red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;Hello CSS~&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="CSS导入方式"><a href="#CSS导入方式" class="headerlink" title="CSS导入方式"></a>CSS导入方式</h2><p>CSS 导入方式其实就是 CSS 代码和 html 代码的结合方式。CSS 导入 HTML有三种方式：</p>
+<ol>
+<li>内联样式：在标签内部使用style属性，属性值是CSS属性键值对</li>
+</ol>
+<pre><code class="lang-html">&lt;div style=&quot;color: red&quot;&gt;Hello CSS~&lt;/div&gt;
+</code></pre>
+<p>给方式只能作用在这一个标签上，如果其他的标签也想使用同样的样式，那就需要在其他标签上写上相同的样式。复用性太差。</p>
+<ol>
+<li>内部样式：定义<code>&lt;style&gt;</code>标签，在标签内部定义CSS样式</li>
+</ol>
+<pre><code class="lang-html">&lt;style type=&quot;text/css&quot;&gt;
+    span{
+        color: red;
+    }
+&lt;/style&gt;
+</code></pre>
+<p>这种方式可以做到在该页面中复用，被span标签包裹的字体会变为红色</p>
+<ol>
+<li>外部样式：定义link标签，引入外部的CSS文件</li>
+</ol>
+<ul>
+<li>编写一个CSS文件。名为：demo.css，内容如下:</li>
+</ul>
+<pre><code class="lang-css">div{
+    color: red;
+}
+</code></pre>
+<ul>
+<li>在html中引入 CSS 文件。</li>
+</ul>
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot;  href=&quot;demo.css&quot;&gt;
+</code></pre>
+<p>这种方式可以在多个页面进行复用。其他的页面想使用同样的样式，只需要使用 <code>link</code> 标签引入该CSS文件。</p>
+<h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><p>CSS 选择器就是选取需设置样式的元素（标签），比如如下CSS代码：</p>
+<pre><code class="lang-css">div {
+    color:red;
+}
+</code></pre>
+<p>如上代码中的 <code>div</code> 就是 css 中的选择器。这里只讲下面三种选择器：</p>
+<ul>
+<li>元素选择器<br>格式：</li>
+</ul>
+<pre><code class="lang-css">元素名称{color: red;}
+</code></pre>
+<p>举例：</p>
+<pre><code class="lang-css">div {color:red}  /*该代码表示将页面中所有的div标签的内容的颜色设置为红色*/
+</code></pre>
+<ul>
+<li>id选择器<br>格式：</li>
+</ul>
+<pre><code class="lang-css">#id属性值{color: red;}
+</code></pre>
+<p>举例：</p>
+<pre><code class="lang-css">#name{color: red;}/*该代码表示将页面中所有的id属性值是 name 的标签的内容的颜色设置为红色*/
+</code></pre>
+<p>在HTML中调用</p>
+<pre><code class="lang-html">&lt;div id=&quot;name&quot;&gt;hello css2&lt;/div&gt;
+</code></pre>
+<ul>
+<li>类选择器<br>格式：</li>
+</ul>
+<pre><code class="lang-css">.class属性值{color: red;}
+</code></pre>
+<p>举例：</p>
+<pre><code class="lang-css">.cls{color: red;} /*该代码表示将页面中所有的class属性值是 cls 的标签的内容的颜色设置为红色*/
+</code></pre>
+<p>在HTML中调用</p>
+<pre><code class="lang-html">&lt;div class=&quot;cls&quot;&gt;hello css3&lt;/div&gt;
+</code></pre>
+<h2 id="CSS属性"><a href="#CSS属性" class="headerlink" title="CSS属性"></a>CSS属性</h2><p>css有很多css属性，想把它们都学会，需要花费很长的时间。而作为java程序员，不需要重点掌握这部分内容。对于网页三剑客中css是对我们要求最低的。了解一些简单的CSS属性就可以，剩下的可以去W3School查。</p>
