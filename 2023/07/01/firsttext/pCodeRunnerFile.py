@@ -1,0 +1,12 @@
+set = {1,2,6,8,4,6,5 }
+print(set)
+a=set.pop()
+print(a)
+set.add(a)
+print(set)
+print(set.pop())
+print(set)
+set.add(a)
+print(set)
+print(set.pop())
+print(set)
