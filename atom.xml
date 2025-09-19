@@ -6,7 +6,7 @@
   <link href="https://www.silvan2077.cc/atom.xml" rel="self"/>
   
   <link href="https://www.silvan2077.cc/"/>
-  <updated>2025-09-18T05:02:49.779Z</updated>
+  <updated>2025-09-19T08:19:32.680Z</updated>
   <id>https://www.silvan2077.cc/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.silvan2077.cc/posts/0.html"/>
+    <id>https://www.silvan2077.cc/posts/0.html</id>
+    <published>2025-09-19T07:26:03.114Z</published>
+    <updated>2025-09-19T08:19:32.680Z</updated>
+    
+    <content type="html"><![CDATA[<h1>右键菜单</h1><p><a href="https://www.fomal.cc/posts/d739261b.html">魔改（四）</a></p><ul><li>在<code>/themes/butterfly/layout/includes/layout.pug</code>中可以修改菜单的内容、图表和链接</li><li>在<code>custom.css</code>中搜索<code>右键菜单</code>可以修改菜单中文字的样式和位置</li></ul><h1>页脚内容</h1><p><a href="https://www.fomal.cc/posts/d739261b.html">魔改（四）</a><br>修改内容：直接修改<code>[BlogRoot]/themes/butterfly/layout/includes/footer.pug</code>里的内容即可<br>修改位置：custom.css中搜索<code>页脚样式 修改页脚中的时间显示：</code>/source/js/runtime.js`</p><h1>修改首页头像的摸鱼图标</h1><p><a href="https://www.fomal.cc/posts/d739261b.html">魔改（四）</a><br>在<code>[BlogRoot]\themes\butterfly\layout\includes\widget\card_author.pug</code>中搜索emoji直接修改即可</p><h1>信息卡片彩带</h1><p>当鼠标悬放在信息卡片上时，会显示一个彩带</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/20250919161030.png"/></div></div><p>可以直接在<code>[BlogRoot]\source\css\custom.css</code>中搜索<code>信息卡片彩带</code>修改</p><h1>个人信息卡片背景</h1><p><a href="https://www.fomal.cc/posts/d739261b.html">魔改（四）</a><br>在<code>[BlogRoot]\source\css\custom.css</code>中搜索<code>个人信息</code>，可以选择是使用渐变色背景还是图片做背景</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;右键菜单&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.fomal.cc/posts/d739261b.html&quot;&gt;魔改（四）&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在&lt;code&gt;/themes/butterfly/layout/includes/layout.p</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title></title>
