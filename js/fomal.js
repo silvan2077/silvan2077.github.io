@@ -3196,18 +3196,44 @@ if (localStorage.getItem("blogbg") != undefined) {
 }
 // 切换背景主函数
 function changeBg(s) {
+  console.log("尝试切换背景:", s);
+  
   // 自定义颜色框
   defineColor = s.charAt(0) == "#" ? s : '#F4D88A';
-  setBg(s);
-  localStorage.setItem("blogbg", s);
   
-  // 添加用户反馈
+  // 如果是图片URL，先测试图片是否可加载
+  if (s.startsWith('url(')) {
+    const imageUrl = s.replace('url(', '').replace(')', '');
+    console.log("检测图片链接:", imageUrl);
+    
+    // 创建图片对象测试加载
+    const testImg = new Image();
+    testImg.onload = function() {
+      console.log("图片加载成功:", imageUrl);
+      setBg(s);
+      localStorage.setItem("blogbg", s);
+      showSuccessMessage("壁纸切换成功🎨", "当前壁纸已成功更换！");
+    };
+    testImg.onerror = function() {
+      console.error("图片加载失败:", imageUrl);
+      showErrorMessage("壁纸加载失败❌", "图片链接可能已失效，请检查网络连接或尝试其他壁纸");
+    };
+    testImg.src = imageUrl;
+  } else {
+    setBg(s);
+    localStorage.setItem("blogbg", s);
+    showSuccessMessage("壁纸切换成功🎨", "当前壁纸已成功更换！");
+  }
+}
+
+// 显示成功消息
+function showSuccessMessage(title, message) {
   debounce(function () {
     new Vue({
       data: function () {
         this.$notify({
-          title: "壁纸切换成功🎨",
-          message: "当前壁纸已成功更换！",
+          title: title,
+          message: message,
           position: 'top-left',
           offset: 50,
           showClose: true,
@@ -3217,6 +3243,78 @@ function changeBg(s) {
       }
     })
   }, 300);
+}
+
+// 显示错误消息
+function showErrorMessage(title, message) {
+  debounce(function () {
+    new Vue({
+      data: function () {
+        this.$notify({
+          title: title,
+          message: message,
+          position: 'top-left',
+          offset: 50,
+          showClose: true,
+          type: "error",
+          duration: 5000
+        });
+      }
+    })
+  }, 300);
+}
+
+// 测试所有背景图片链接的函数
+function testAllBackgroundImages() {
+  const animeUrls = [
+    'https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/51d1b556e00bc2033d4d568ae935f0c4.jpg',
+    'https://konachan.net/data/preview/83/2f/832fd5c823bc9952564dc0bcf13e510d.jpg',
+    'https://konachan.net/data/preview/79/3d/793da1d3101e98b10988803153741ce4.jpg',
+    'https://konachan.net/data/preview/4f/e8/4fe890ba652131756980cfe9b7e9fb25.jpg',
+    'https://c.wallhere.com/photos/4f/79/anime_anime_girls-2290696.jpg!s2',
+    'https://c.wallhere.com/photos/b5/e1/Sousou_No_Frieren_Frieren_Heiter_Sousou_no_Frieren_Himmel_Sousou_no_Frieren_Eisen_Sousou_no_Frieren-2296206.jpg!s2',
+    'https://cc-img.townimg.com/uploads/2025/08/20250824062206450.jpg',
+    'https://wallpapercave.com/wpr/wp15410704.jpg',
+    'https://pic.netbian.com/uploads/allimg/250505/145905-17464283451bee.jpg',
+    'https://pic.netbian.com/uploads/allimg/250807/223455-1754577295db62.jpg'
+  ];
+  
+  const landscapeUrls = [
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop',
+    'https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_08_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen',
+    'https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_07_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen',
+    'https://wallpapercave.com/wpr/wp10724106.jpg',
+    'https://wallpapercave.com/wpr/wp15653652.jpg',
+    'https://wallpapercave.com/wpr/wp15582071.jpg',
+    'https://wallpapercave.com/wpr/wp15624857.jpg'
+  ];
+  
+  console.log("开始测试二次元背景图片链接...");
+  animeUrls.forEach((url, index) => {
+    const img = new Image();
+    img.onload = function() {
+      console.log(`✅ 二次元图片 ${index + 1} 加载成功:`, url);
+    };
+    img.onerror = function() {
+      console.log(`❌ 二次元图片 ${index + 1} 加载失败:`, url);
+    };
+    img.src = url;
+  });
+  
+  console.log("开始测试风景背景图片链接...");
+  landscapeUrls.forEach((url, index) => {
+    const img = new Image();
+    img.onload = function() {
+      console.log(`✅ 风景图片 ${index + 1} 加载成功:`, url);
+    };
+    img.onerror = function() {
+      console.log(`❌ 风景图片 ${index + 1} 加载失败:`, url);
+    };
+    img.src = url;
+  });
 }
 // 设置背景属性
 function setBg(s) {
@@ -3454,7 +3552,7 @@ function createWinbox() {
 <h3>1. 二次元</h3>
 <details class="folding-tag" cyan><summary> 查看二次元背景 </summary>
               <div class='content'>
-              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://source.fomal.cc/img/dm4.webp)" class="imgbox" onclick="changeBg('url(https://source.fomal.cc/img/dm4.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://source.fomal.cc/img/dm6.webp)" class="imgbox" onclick="changeBg('url(https://source.fomal.cc/img/dm6.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://source.fomal.cc/img/dm7.webp)" class="imgbox" onclick="changeBg('url(https://source.fomal.cc/img/dm7.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://source.fomal.cc/img/dm12.webp)" class="imgbox" onclick="changeBg('url(https://source.fomal.cc/img/dm12.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://source.fomal.cc/img/dark_mode.webp)" class="imgbox" onclick="changeBg('url(https://source.fomal.cc/img/dark_mode.webp)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://source.fomal.cc/img/fj8.webp)" class="imgbox" onclick="changeBg('url(https://source.fomal.cc/img/fj8.webp)')"></a></div>
+              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/51d1b556e00bc2033d4d568ae935f0c4.jpg)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/51d1b556e00bc2033d4d568ae935f0c4.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/20250921230121.png)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/20250921230121.png)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/20250921225953.png)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/20250921225953.png)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/20250921230524.png)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/20250921230524.png)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/wp15410704.jpg)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/wp15410704.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250505/145905-17464283451bee.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250505/145905-17464283451bee.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250413/195139-17445450990d7b.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250413/195139-17445450990d7b.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/wp15795276.jpg)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/wp15795276.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/223455-1754577295db62.jpg)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/223455-1754577295db62.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/110421-17473646613fcb.jpg)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/110421-17473646613fcb.jpg)')"></a></div>
               </div>
             </details>
 
@@ -3463,25 +3561,28 @@ function createWinbox() {
 
 <details class="folding-tag" cyan><summary> 查看风景背景 </summary>
               <div class='content'>
-              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://lskypro.acozycotage.net/Fomalhaut/img/fj1.webp)" class="imgbox" onclick="changeBg('url(https://lskypro.acozycotage.net/Fomalhaut/img/fj1.webp)')"></a></div>
+              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop)" class="imgbox" onclick="changeBg('url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1920&h=1080&fit=crop)" class="imgbox" onclick="changeBg('url(https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1920&h=1080&fit=crop)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=1080&fit=crop)" class="imgbox" onclick="changeBg('url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=1080&fit=crop)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop)" class="imgbox" onclick="changeBg('url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_08_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_08_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_07_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_07_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp10724106.jpg)" class="imgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp10724106.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp15653652.jpg)" class="imgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp15653652.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/image-20250920153326433.png)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/image-20250920153326433.png)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://w.wallhaven.cc/full/je/wallhaven-jex8qq.jpg)" class="imgbox" onclick="changeBg('url(https://w.wallhaven.cc/full/je/wallhaven-jex8qq.jpg)')"></a></div>
               </div>
             </details>
 
-<h3>3. 萌宠</h3>
 
-<details class="folding-tag" cyan><summary> 查看萌宠背景 </summary>
+<h3>3. 卡通</h3>
+
+<details class="folding-tag" cyan><summary> 查看卡通背景 </summary>
               <div class='content'>
-              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://lskypro.acozycotage.net/Fomalhaut/img/mc1.webp)" class="imgbox" onclick="changeBg('url(https://lskypro.acozycotage.net/Fomalhaut/img/mc1.webp)')"></a></div>
+              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp14319712.jpg)" class="imgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp14319712.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp14191707.jpg)" class="imgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp14191707.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/uwp/uwp4861676.jpeg)" class="imgbox" onclick="changeBg('url(https://wallpapercave.com/uwp/uwp4861676.jpeg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250626/123608-1750912568ea1c.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250626/123608-1750912568ea1c.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250912/215133-1757685093587d.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250912/215133-1757685093587d.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_07_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_07_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/221444-17571680846d0b.jpg)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/221444-17571680846d0b.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250819/225037-1755615037565f.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250819/225037-1755615037565f.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250811/225628-1754924188e3a2.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250811/225628-1754924188e3a2.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250811/225123-1754923883ee02.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250811/225123-1754923883ee02.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250630/105223-1751251943a080.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250630/105223-1751251943a080.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://bizhi1.com/wp-content/uploads/2024/11/kitten-3840x2160-adorable-cute-minimalist-charming-26362.jpg)" class="imgbox" onclick="changeBg('url(https://bizhi1.com/wp-content/uploads/2024/11/kitten-3840x2160-adorable-cute-minimalist-charming-26362.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250630/201621-1751285781e813.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250630/201621-1751285781e813.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250719/230800-17529376804553.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250719/230800-17529376804553.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/181635-1750587395e3e1.jpg)" class="imgbox" onclick="changeBg('url(https://raw.githubusercontent.com/silvan2077/markdown_pic/main/Picgo/181635-1750587395e3e1.jpg)')"></a></div>
               </div>
             </details>
 
-<h3>4. 渐变色</h3>
-<details class="folding-tag" cyan><summary> 查看渐变色背景 </summary>
+
+
+<h3>3. 游戏</h3>
+
+<details class="folding-tag" cyan><summary> 查看游戏背景 </summary>
               <div class='content'>
-              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to right, #544a7d, #ffd452)" onclick="changeBg('linear-gradient(to right, #544a7d, #ffd452)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to bottom, #7f7fd5, #86a8e7, #91eae4)" onclick="changeBg('linear-gradient(to bottom, #7f7fd5, #86a8e7, #91eae4)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to left, #654ea3, #eaafc8)" onclick="changeBg('linear-gradient(to left, #654ea3, #eaafc8)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #feac5e, #c779d0, #4bc0c8)" onclick="changeBg('linear-gradient(to top, #feac5e, #c779d0, #4bc0c8)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #d3959b, #bfe6ba)" onclick="changeBg('linear-gradient(to top, #d3959b, #bfe6ba)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #8360c3, #2ebf91)" onclick="changeBg('linear-gradient(to top, #8360c3, #2ebf91)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #108dc7, #ef8e38)" onclick="changeBg('linear-gradient(to top, #108dc7, #ef8e38)')"></a><a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)" onclick="changeBg('linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)')"></a></div>
+              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_hollow_knight_silksong_fan_art_01_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_hollow_knight_silksong_fan_art_01_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_09_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_09_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp15785760.jpg)" class="imgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp15785760.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_lords_of_the_fallen_2_01_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_lords_of_the_fallen_2_01_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_08_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_08_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_07_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_solasta_crown_of_the_magister_07_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_assassins_creed_shadows_09_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_assassins_creed_shadows_09_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_hordes_of_hunger_01_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)" class="imgbox" onclick="changeBg('url(https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_hordes_of_hunger_01_2560x1440.jpg&height=450&width=800&fill-to-fit&sharpen)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250904/171746-17569774666928.jpg)" class="imgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250904/171746-17569774666928.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp15624857.jpg)" class="imgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp15624857.jpg)')"></a></div>
               </div>
             </details>
-
 
 <h3>5. 纯色</h3>
 <details class="folding-tag" cyan><summary> 查看纯色背景 </summary>
@@ -3495,7 +3596,7 @@ function createWinbox() {
 <h3>6. 适配手机</h3>
 <details class="folding-tag" cyan><summary> 查看适配手机的背景 </summary>
               <div class='content'>
-              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://lskypro.acozycotage.net/Fomalhaut/img/mb4.webp)" class="pimgbox" onclick="changeBg('url(https://lskypro.acozycotage.net/Fomalhaut/img/mb4.webp)')"></a></div>
+              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp13179442.jpg)" class="pimgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp13179442.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp9303422.jpg)" class="pimgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp9303422.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp13297035.jpg)" class="pimgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp13297035.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://wallpapercave.com/wpr/wp15442990.jpg)" class="pimgbox" onclick="changeBg('url(https://wallpapercave.com/wpr/wp15442990.jpg)')"></a><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://pic.netbian.com/uploads/allimg/250522/232648-1747927608a0fe.jpg)" class="pimgbox" onclick="changeBg('url(https://pic.netbian.com/uploads/allimg/250522/232648-1747927608a0fe.jpg)')"></a></div>
               </div>
             </details>
 
