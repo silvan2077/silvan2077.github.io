@@ -7092,6 +7092,18 @@ div#archive {
 
 /* 确保首页副标题可见（避免被遮罩/层级覆盖或隐藏） */
 #site-subtitle {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: var(--light-grey) !important;
+  font-size: 1.15em !important;
+  text-align: center !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, .15) !important;
+  line-height: 1.5 !important;
+  margin: 10px 0 !important;
+}
+
+#subtitle {
   display: inline !important;
   visibility: visible !important;
   opacity: 1 !important;
